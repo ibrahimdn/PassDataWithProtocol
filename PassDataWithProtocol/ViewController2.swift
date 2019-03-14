@@ -7,13 +7,23 @@
 //
 
 import UIKit
+protocol PassDataDelegate {
+    func delegate(passData: String)
+}
 
 class ViewController2: UIViewController {
 
+    @IBOutlet weak var dataText: UITextField!
+    var PassDelegate: PassDataDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func sendData(_ sender: UIButton) {
+        PassDelegate?.delegate(passData: dataText.text!)
+        self.navigationController?.popViewController(animated: true)
     }
     
 
